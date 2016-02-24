@@ -11,43 +11,34 @@ var wlInitOptions = {
 
 // Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).
 function wlCommonInit(){
+    document.getElementById("getBalance").addEventListener("click", getBalance);
+    var userLoginChallengeHandler = UserLoginChallengeHandler();
+    showLoginDiv();
 
-    //MFP APIs should only be called within wlCommonInit() or after it has been called, to ensure that the APIs have loaded properly
-
-	// Common initialization code goes here
-    document.getElementById('app_version').textContent = WL.Client.getAppProperty("APP_VERSION");
-    document.getElementById('mobilefirst').setAttribute('style', 'display:block;');
 }
 
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
+function showLoginDiv() {
+    document.getElementById('protectedDiv').style.display = 'none'; 
+    document.getElementById('statusMsg').innerHTML = "";
+    document.getElementById('loginDiv').style.display = 'block';
+}
 
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
+function showProtectedDiv() {
+    document.getElementById('loginDiv').style.display = 'none'; 
+    document.getElementById('resultLabel').innerHTML = "";
+    document.getElementById('protectedDiv').style.display = 'block';
+}
 
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, 'app.receivedEvent(...);' must be explicitly called.
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
+function getBalance () {
+    var resourceRequest = new WLResourceRequest("/adapters/ResourceAdapter/balance", WLResourceRequest.GET);
+    resourceRequest.send().then(
+        function (response) {
+            WL.Logger.debug("Balance: " + response.responseText);
+            document.getElementById("resultLabel").innerHTML = "Balance: " + response.responseText;
+        },
+        function (response) {
+            WL.Logger.debug("Failed to get balance: " + JSON.stringify(response));
+            document.getElementById("resultLabel").innerHTML = "Failed to get balance.";
+        });
+}
 
-    // Update the DOM on a received event.
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
-
-app.initialize();
