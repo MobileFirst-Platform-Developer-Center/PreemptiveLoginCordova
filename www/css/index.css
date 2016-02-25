@@ -87,14 +87,3 @@ input {
 	text-align: left;
 	width: 500px;
 }
-
-
-#rememberMe {
-    width: 7%;
-    float: left;
-}
-
-#rememberMeText {
-    line-height: 2.5em;
-    margin: 0;
-}
