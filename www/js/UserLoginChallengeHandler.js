@@ -39,7 +39,7 @@ var UserLoginChallengeHandler = function() {
         isChallenged = false;
         document.getElementById('username').value = "";
         document.getElementById('password').value = "";
-        document.getElementById("helloUser").innerHTML = "Hello " + data.user.displayName;
+        document.getElementById("helloUser").innerHTML = "Hello, " + data.user.displayName;
         showProtectedDiv();
     }
 
