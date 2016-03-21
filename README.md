@@ -13,8 +13,9 @@ https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authenticat
  The UserAuthentication Security Check adapter can be found in https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80.
 
 2. From a command-line window, navigate to the project's root folder and run the commands:
- 1. `mfpdev app register` - to register the application.
- 2. `mfpdev app push` - to map the `accessRestricted` scope to the `UserLogin` security check.
+ - `mfpdev app register` - to register the application.
+ - `mfpdev app push` - to map the `accessRestricted` scope to the `UserLogin` security check.
+
 3. Back in the command-line:
     - Add a platform by running the `cordova platform add` command.
     - Run the Cordova application by running the `cordova run` command.
