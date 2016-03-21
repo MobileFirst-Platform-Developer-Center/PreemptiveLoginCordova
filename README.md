@@ -20,8 +20,6 @@ https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authenticat
     - Add a platform by running the `cordova platform add` command.
     - Run the Cordova application by running the `cordova run` command.
 
-
-
 ### Supported Levels
 IBM MobileFirst Platform Foundation 8.0
 
