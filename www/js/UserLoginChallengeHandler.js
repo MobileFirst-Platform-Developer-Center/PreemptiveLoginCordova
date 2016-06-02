@@ -35,7 +35,7 @@ var UserLoginChallengeHandler = function() {
     };
 
     userLoginChallengeHandler.handleSuccess = function(data) {
-        WL.Logger.debug("processSuccess");
+        WL.Logger.debug("handleSuccess");
         isChallenged = false;
         document.getElementById('username').value = "";
         document.getElementById('password').value = "";
